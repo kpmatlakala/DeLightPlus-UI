@@ -10,7 +10,7 @@ npm install delightplus-ui
 
 ## Usage
 ```tsx
-import { Button, HomeIcon } from 'delightplusui';
+import { Button, HomeIcon } from 'delightplus-ui';
 
 
 <Button variant="primary">Click Me</Button>
