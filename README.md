@@ -37,6 +37,9 @@ License
 MIT © DeLightPlus
 ---
 
+![npm version](https://img.shields.io/npm/v/delightplus-ui)
+
+
 
 <!--
 When you release stable versions:
