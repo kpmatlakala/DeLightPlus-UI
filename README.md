@@ -5,7 +5,7 @@ A modern, reusable React component and icon library created by [DeLightPlus](htt
 ## Installation
 
 ```bash
-npm install delightplusui
+npm install delightplus-ui
 ```
 
 ## Usage
@@ -36,6 +36,9 @@ npm run build
 License
 MIT © DeLightPlus
 ---
+
+![npm version](https://img.shields.io/npm/v/delightplus-ui)
+
 
 
 <!--
