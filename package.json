@@ -1,0 +1,30 @@
+{
+  "name": "delightplusui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsup src/index.ts --dts --format esm,cjs --out-dir dist"
+  },
+  "keywords": [],
+  "author": "Kabelo Peter Matlakala",
+  "private": false,
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  }
+}
