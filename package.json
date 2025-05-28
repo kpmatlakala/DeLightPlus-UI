@@ -1,8 +1,8 @@
 {
-  "name": "delightplusui",
-  "version": "1.0.0",
+  "name": "delightplus-ui",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
@@ -12,10 +12,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsup src/index.ts --dts --format esm,cjs --out-dir dist"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "component",
+    "ui",
+    "icons",
+    "delightplus"
+  ],
   "author": "Kabelo Peter Matlakala",
   "private": false,
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "react": "^19.1.0",
@@ -24,6 +30,7 @@
   "devDependencies": {
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
+    "gh-pages": "^6.3.0",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3"
   }
