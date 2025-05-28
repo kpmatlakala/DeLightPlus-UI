@@ -1,14 +1,13 @@
-import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import { Button } from 'delightplus-ui';
 
-import { Button, PlusIcon } from 'delightplus-ui';
+import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Button onClick={() => alert("Clicked!")}>Hello from DeLightPlusUI</Button>
-      <PlusIcon />
+      <img src={logo} className="App-logo" alt="logo" />        
+      <Button>HelloWorld!!!</Button>   
     </div>
   );
 }
