@@ -7,7 +7,7 @@ export default function Home() {
     <Container className="min-h-screen flex flex-col items-center justify-center gap-12 bg-gray-900 text-gray-100 px-4 py-12">
       <Card className="w-full max-w-md bg-white text-gray-800 p-8 rounded-2xl shadow-2xl">
         <header className="mb-6 text-center">
-          <h1 className="text-2xl font-extrabold tracking-tight">Welcome to DelightPlus-UI</h1>
+          <h1 className="text-2xl font-extrabold tracking-tight">Welcome to DeLightPlus-UI</h1>
           <p className="text-gray-600 mt-2 text-sm">
             Start building beautiful interfaces with reusable React components.
           </p>
