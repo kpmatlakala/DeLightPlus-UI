@@ -7,7 +7,6 @@
     "dev": "next dev",
     "build": "next build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d out",
     "start": "next start",
     "lint": "next lint"
   },
@@ -28,7 +27,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
-    "gh-pages": "^6.3.0",
     "tailwindcss": "^4.1.8",
     "typescript": "^5"
   },
