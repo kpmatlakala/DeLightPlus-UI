@@ -1,26 +1,53 @@
 {
-  "name": "delightplus-ui-monorepo",
-  "version": "1.0.0",
-  "description": "Monorepo",
-  "main": "index.js",
-  "private": true,
-  "workspaces": ["docs", "packages/*"],
-  "directories": {
-    "doc": "docs"
-  },
+  "name": "delightplus-ui",
+  "version": "0.1.6",
+  "description": "Custom reusable React UI components by DeLightPlus",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "styles"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsup --config tsup.config.ts && npm run build:css",
+    "build:css": "tailwindcss -i ./styles/tailwind.css -o ./dist/styles.css",
+    "prepublishOnly": "npm run build",
+    "version:patch": "npm version patch --no-git-tag-version",
+    "version:minor": "npm version minor --no-git-tag-version",
+    "version:major": "npm version major --no-git-tag-version",
+    "release": "npm run version:patch && npm run build && npm publish"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DeLightPlus/DeLightPlus-UI.git"
+  "keywords": [
+    "react",
+    "component",
+    "ui",
+    "icons",
+    "delightplus"
+  ],
+  "author": "Kabelo Peter Matlakala",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/DeLightPlus/DeLightPlus-UI/issues"
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
-  "homepage": "https://github.com/DeLightPlus/DeLightPlus-UI#readme"
+  "dependencies": {
+    "clsx": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.17",
+    "gh-pages": "^6.3.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.3.3"
+  }
 }
