@@ -1,6 +1,0 @@
-{
-    "rewrites": [
-      { "source": "/ui/**", "destination": "/index.html" }
-    ]
-  }
-  
