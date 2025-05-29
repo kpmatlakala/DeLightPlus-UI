@@ -2,6 +2,7 @@
   "name": "docs",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://delightplus.github.io/ui",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
