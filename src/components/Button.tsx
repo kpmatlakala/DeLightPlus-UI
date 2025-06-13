@@ -35,7 +35,7 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const tailwindClass = clsx(
-    "font-semibold transition duration-200",
+    "transition duration-200",
     variant === "primary" && "bg-blue-500 text-white hover:bg-blue-600",
     variant === "secondary" && "bg-gray-200 text-gray-900 hover:bg-gray-300",
     variant === "custom" && "",
@@ -57,7 +57,12 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <button className={tailwindClass} style={fallbackStyle} disabled={isLoading} {...props}>
+    <button 
+      className={tailwindClass} 
+      style={fallbackStyle}
+      disabled={isLoading} 
+      {...props}
+    >
       {isLoading ? "Loading..." : children}
     </button>
   );

@@ -8,7 +8,7 @@ export const Container: React.FC<ContainerProps> = ({ children, className, style
   const tailwindClass = clsx("max-w-4xl mx-auto px-4", className);
 
   const fallbackStyle: React.CSSProperties = {
-    maxWidth: "1440px",
+    maxWidth: "100vw",
     margin: "0 auto",
     padding: "0 1rem",
     ...style,
