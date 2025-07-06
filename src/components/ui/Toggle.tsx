@@ -1,5 +1,5 @@
 import React from "react";
-import { clsx } from "clsx";
+import { cn } from '../../lib/utils/cn';
 
 export type ToggleProps = {
   checked?: boolean;
@@ -39,7 +39,7 @@ export const Toggle: React.FC<ToggleProps> = ({
     }
   };
 
-  const tailwindClass = clsx(
+  const tailwindClass = cn(
     "relative inline-flex items-center rounded-full transition-colors duration-200 ease-in-out",
     sizeMap[size],
     checked ? variantMap[variant] : "bg-gray-300",
@@ -62,7 +62,7 @@ export const Toggle: React.FC<ToggleProps> = ({
         disabled={disabled}
       />
       <span
-        className={clsx(
+        className={cn(
           "absolute left-0.5 top-0.5 bg-white rounded-full transition-transform duration-200 ease-in-out",
           size === "sm" && "w-3 h-3",
           size === "md" && "w-5 h-5",

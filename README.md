@@ -37,7 +37,7 @@ npm install -D tailwindcss@^3.4.1 postcss@^8.4.35 autoprefixer@^10.4.17
 module.exports = {
   content: [
     './src/**/*.{js,ts,jsx,tsx}',
-    './node_modules/delightplus-ui/**/*.{js,ts,jsx,tsx}', // Add this line
+    './node_modules/delightplus-ui/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {},
@@ -86,11 +86,41 @@ function MyComponent() {
 }
 ```
 
+### Customizing Button Styles
+
+If you want to fully control the Button's styles (for example, to use a custom background or hover color), use `variant="custom"`:
+
+```tsx
+<Button
+  variant="custom"
+  className="flex items-center gap-2 px-4 py-2 rounded hover:bg-gray-700 focus:outline-none"
+>
+  <span className="font-semibold">Create</span>
+</Button>
+```
+
 ## Available Components
 
 - `Button`: A customizable button component
 - `Card`: A flexible card container
 - `Container`: A responsive container component
+- `Modal`: A reusable modal dialog
+- **Icon Set**: A large set of SVG icons for UI, social, and tech stack (see below)
+
+## Using Icons
+
+All icons are available as React components in the `src/icons/` directory. Each icon accepts `size`, `color`, and `className` props for easy customization.
+
+**Example:**
+```tsx
+import { GitHubIcon, ReactIcon, TasksIcon } from './src/icons';
+
+<GitHubIcon size={32} color="#333" />
+<ReactIcon className="text-sky-500" />
+<TasksIcon size={20} />
+```
+
+See [`src/icons/README.md`](./src/icons/README.md) for a full list and usage details.
 
 ## Development
 
@@ -137,12 +167,13 @@ MIT © Kabelo Peter Matlakala
 ---
 **Components**
 - Button
-- Modal (coming soon)
-- Card (coming soon)
+- Modal
+- Card
+- Container
+- ...and more
 
 **Icons**
-- HomeIcon
-- SearchIcon
+- See [`src/icons/README.md`](./src/icons/README.md) for the full icon set and usage instructions.
 
 ## Local Development
 ```bash

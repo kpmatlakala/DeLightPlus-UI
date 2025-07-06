@@ -5,7 +5,7 @@ import { clsx } from "clsx";
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "primary" | "secondary" | "custom";
   radius?: "none" | "sm" | "md" | "lg" | "xl" | "full";
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg"; // sm, md, lg, icon
   isLoading?: boolean;
 };
 

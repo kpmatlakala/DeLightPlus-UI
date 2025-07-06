@@ -1,14 +1,7 @@
 import React from "react";
-import { clsx } from "clsx";
+import { cn } from '../../lib/utils/cn';
 
-export type SelectOption = {
-  value: string;
-  label: string;
-  disabled?: boolean;
-};
-
-export type SelectProps = Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "size"> & {
-  options: SelectOption[];
+export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
   label?: string;
   error?: string;
   helperText?: string;
@@ -29,9 +22,8 @@ const sizeMap = {
   lg: "px-4 py-3 text-lg",
 };
 
-export const Select: React.FC<SelectProps> = ({
+export const Textarea: React.FC<TextareaProps> = ({
   className,
-  options,
   label,
   error,
   helperText,
@@ -40,40 +32,36 @@ export const Select: React.FC<SelectProps> = ({
   fullWidth = false,
   ...props
 }) => {
-  const tailwindClass = clsx(
-    "block rounded-md transition-colors duration-200",
+  const tailwindClass = cn(
+    'block w-full rounded-md transition-colors duration-200',
     variantMap[variant],
     sizeMap[size],
-    error && "border-red-500 focus:border-red-500 focus:ring-red-500",
-    fullWidth ? "w-full" : "w-auto",
+    error && 'border-red-500 focus:border-red-500 focus:ring-red-500',
+    fullWidth ? 'w-full' : 'w-auto',
     className
   );
 
+  const fallbackStyle: React.CSSProperties = {
+    minHeight: size === "sm" ? "80px" : size === "lg" ? "120px" : "100px",
+    resize: "vertical",
+  };
+
   return (
-    <div className={clsx("flex flex-col gap-1", fullWidth ? "w-full" : "w-auto")}>
+    <div className={cn('flex flex-col gap-1', fullWidth ? 'w-full' : 'w-auto')}>
       {label && (
         <label className="text-sm font-medium text-gray-700">
           {label}
         </label>
       )}
-      <select
+      <textarea
         className={tailwindClass}
+        style={fallbackStyle}
         {...props}
-      >
-        {options.map((option) => (
-          <option
-            key={option.value}
-            value={option.value}
-            disabled={option.disabled}
-          >
-            {option.label}
-          </option>
-        ))}
-      </select>
+      />
       {(error || helperText) && (
-        <p className={clsx(
-          "text-sm",
-          error ? "text-red-500" : "text-gray-500"
+        <p className={cn(
+          'text-sm',
+          error ? 'text-red-500' : 'text-gray-500'
         )}>
           {error || helperText}
         </p>

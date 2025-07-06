@@ -1,12 +1,18 @@
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-  entry: ['src/index.ts'],
+  entry: [
+    'src/index.ts',
+    'src/components/index.ts',
+    'src/icons/index.ts',
+  ],
   format: ['esm', 'cjs'],
   dts: true,
   splitting: false,
   sourcemap: true,
-  clean: false,
+  clean: true,
+  outDir: 'dist',
+  shims: false,
   external: ['react', 'react-dom'],
   noExternal: ['clsx'],
   esbuildOptions(options) {
