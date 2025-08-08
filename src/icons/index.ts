@@ -32,4 +32,5 @@ export * from './GraduationCapIcon';
 export * from './MapPinIcon';
 export * from './CodeIcon';
 export * from './MoreHorizontalIcon';
-export * from './MoreVerticalIcon'; 
+export * from './MoreVerticalIcon';
+export * from './CircleIcon'; 

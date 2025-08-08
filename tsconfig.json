@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "ESNext",
     "module": "ESNext",
     "lib": [
@@ -18,5 +19,8 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "paths": {
+      "@/*": ["src/*"] // or just ["*"] if no /src folder
+    }
 }

@@ -1,45 +1,84 @@
 "use client"
 
-import { GripVertical } from "lucide-react"
-import * as ResizablePrimitive from "react-resizable-panels"
+import React, { useRef, useState } from "react";
+import { cn } from '../../lib/utils/cn';
 
-import { cn } from "@/lib/utils"
+interface ResizablePanelGroupProps {
+  className?: string;
+  children: [React.ReactNode, React.ReactNode];
+  initial?: number; // initial left panel width percent
+  min?: number; // min percent for left panel
+  max?: number; // max percent for left panel
+}
 
-const ResizablePanelGroup = ({
+const ResizablePanelGroup: React.FC<ResizablePanelGroupProps> = ({
   className,
-  ...props
-}: React.ComponentProps<typeof ResizablePrimitive.PanelGroup>) => (
-  <ResizablePrimitive.PanelGroup
-    className={cn(
-      "flex h-full w-full data-[panel-group-direction=vertical]:flex-col",
-      className
-    )}
-    {...props}
-  />
-)
+  children,
+  initial = 50,
+  min = 10,
+  max = 90,
+}) => {
+  const [leftPercent, setLeftPercent] = useState(initial);
+  const dragging = useRef(false);
 
-const ResizablePanel = ResizablePrimitive.Panel
+  const onMouseDown = () => {
+    dragging.current = true;
+    document.body.style.cursor = "col-resize";
+  };
+  const onMouseUp = () => {
+    dragging.current = false;
+    document.body.style.cursor = "";
+  };
+  const onMouseMove = (e: MouseEvent) => {
+    if (!dragging.current) return;
+    const parent = document.getElementById("resizable-group");
+    if (!parent) return;
+    const rect = parent.getBoundingClientRect();
+    let percent = ((e.clientX - rect.left) / rect.width) * 100;
+    percent = Math.max(min, Math.min(max, percent));
+    setLeftPercent(percent);
+  };
+  React.useEffect(() => {
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+    };
+  });
 
-const ResizableHandle = ({
-  withHandle,
-  className,
-  ...props
-}: React.ComponentProps<typeof ResizablePrimitive.PanelResizeHandle> & {
-  withHandle?: boolean
-}) => (
-  <ResizablePrimitive.PanelResizeHandle
+  return (
+    <div
+      id="resizable-group"
+      className={cn("flex h-full w-full", className)}
+      style={{ userSelect: dragging.current ? "none" : undefined }}
+    >
+      <div style={{ width: `${leftPercent}%`, minWidth: 0, height: "100%" }}>{children[0]}</div>
+      <ResizableHandle onMouseDown={onMouseDown} />
+      <div style={{ width: `${100 - leftPercent}%`, minWidth: 0, height: "100%" }}>{children[1]}</div>
+    </div>
+  );
+};
+
+const ResizablePanel: React.FC<{ children: React.ReactNode }> = ({ children }) => <>{children}</>;
+
+const ResizableHandle: React.FC<{ onMouseDown?: React.MouseEventHandler<HTMLDivElement> }> = ({ onMouseDown }) => (
+  <div
+    onMouseDown={onMouseDown}
     className={cn(
-      "relative flex w-px items-center justify-center bg-border after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1 data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&[data-panel-group-direction=vertical]>div]:rotate-90",
-      className
+      "relative flex w-2 cursor-col-resize items-center justify-center bg-border hover:bg-accent transition-colors z-10 select-none"
     )}
-    {...props}
+    style={{ height: "100%" }}
+    tabIndex={0}
+    role="separator"
+    aria-orientation="vertical"
   >
-    {withHandle && (
-      <div className="z-10 flex h-4 w-3 items-center justify-center rounded-sm border bg-border">
-        <GripVertical className="h-2.5 w-2.5" />
-      </div>
-    )}
-  </ResizablePrimitive.PanelResizeHandle>
-)
+    <svg width="8" height="24" viewBox="0 0 8 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="3" y="4" width="2" height="2" rx="1" fill="currentColor" />
+      <rect x="3" y="11" width="2" height="2" rx="1" fill="currentColor" />
+      <rect x="3" y="18" width="2" height="2" rx="1" fill="currentColor" />
+    </svg>
+  </div>
+);
 
-export { ResizablePanelGroup, ResizablePanel, ResizableHandle }
+export { ResizablePanelGroup, ResizablePanel, ResizableHandle };
