@@ -4,6 +4,8 @@ A collection of reusable React UI components by DeLightPlus.
 
 ## Installation
 
+Install DeLightPlus UI using your preferred package manager:
+
 ```bash
 npm install delightplus-ui
 # or
@@ -12,9 +14,7 @@ yarn add delightplus-ui
 pnpm add delightplus-ui
 ```
 
-## Setup
-
-### 1. Install Required Dependencies
+### Peer Dependencies
 
 Make sure you have the following peer dependencies installed in your project:
 
@@ -99,13 +99,25 @@ If you want to fully control the Button's styles (for example, to use a custom b
 </Button>
 ```
 
-## Available Components
+## Components
 
-- `Button`: A customizable button component
-- `Card`: A flexible card container
-- `Container`: A responsive container component
-- `Modal`: A reusable modal dialog
-- **Icon Set**: A large set of SVG icons for UI, social, and tech stack (see below)
+- **Button**  
+  A customizable button supporting variants, sizes, icons, and full Tailwind styling.
+
+- **Card**  
+  A flexible container for grouping related content, with optional header and footer.
+
+- **Container**  
+  A responsive wrapper for page content, with max-width and padding utilities.
+
+- **Modal**  
+  A reusable dialog/modal component with overlay and focus management.
+
+- **Icon Set**  
+  A large set of SVG icons as React components.  
+  _See [Using Icons](#using-icons) for usage details._
+
+<!-- Add more components as you release them -->
 
 ## Using Icons
 
@@ -113,11 +125,10 @@ All icons are available as React components in the `src/icons/` directory. Each 
 
 **Example:**
 ```tsx
-import { GitHubIcon, ReactIcon, TasksIcon } from './src/icons';
+import { GitHubIcon, ReactIcon } from 'delightplus-ui/icons';
 
 <GitHubIcon size={32} color="#333" />
 <ReactIcon className="text-sky-500" />
-<TasksIcon size={20} />
 ```
 
 See [`src/icons/README.md`](./src/icons/README.md) for a full list and usage details.

@@ -8,12 +8,13 @@ export const Slot = React.forwardRef<HTMLElement, SlotProps>(
   ({ children, ...props }, ref) => {
     if (React.isValidElement(children)) {
       return React.cloneElement(children, {
-        ref,
-        ...props,
         ...children.props,
+        ...props,
+        ref,
       });
     }
     return <>{children}</>;
   }
 );
-Slot.displayName = "Slot"; 
+Slot.displayName = "Slot";
+
