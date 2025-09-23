@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { cn } from '../../lib/utils/cn';
 import { Button } from './Button';
-import { ChevronLeftIcon, ChevronRightIcon } from '../../icons';
+import { ArrowIcon } from '../../icons';
 
 export interface CarouselProps {
   children: React.ReactNode[];
@@ -30,7 +30,7 @@ export const Carousel: React.FC<CarouselProps> = ({ children, className }) => {
         onClick={() => goTo(current - 1)}
         aria-label="Previous"
       >
-        <ChevronLeftIcon className="w-5 h-5" />
+        <ArrowIcon variant='chevron' direction='left' className="w-5 h-5" />
       </Button>
       <Button
         className="absolute right-2 top-1/2 -translate-y-1/2 z-10"
@@ -39,7 +39,7 @@ export const Carousel: React.FC<CarouselProps> = ({ children, className }) => {
         onClick={() => goTo(current + 1)}
         aria-label="Next"
       >
-        <ChevronRightIcon className="w-5 h-5" />
+        <ArrowIcon variant='chevron' direction='right' className="w-5 h-5" />
       </Button>
       <div className="flex justify-center mt-2 gap-2">
         {Array.from({ length: total }).map((_, idx) => (

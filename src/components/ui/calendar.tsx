@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { cn } from '../../lib/utils/cn';
 import { Button } from './Button';
-import { ChevronLeftIcon, ChevronRightIcon } from '../../icons';
+import { ArrowIcon } from '../../icons';
 
 export interface CalendarProps {
   value?: Date;
@@ -51,13 +51,13 @@ export const Calendar: React.FC<CalendarProps> = ({ value, onChange, className }
     <div className={cn('p-3 w-80 rounded-lg border bg-background', className)}>
       <div className="flex items-center justify-between mb-2">
         <Button variant="secondary" size="sm" onClick={handlePrevMonth} aria-label="Previous Month">
-          <ChevronLeftIcon className="w-4 h-4" />
+          <ArrowIcon variant='chevron' direction='left' className="w-4 h-4" />
         </Button>
         <span className="font-semibold text-lg">
           {viewDate.toLocaleString('default', { month: 'long' })} {year}
         </span>
         <Button variant="secondary" size="sm" onClick={handleNextMonth} aria-label="Next Month">
-          <ChevronRightIcon className="w-4 h-4" />
+          <ArrowIcon variant='chevron' direction='right' className="w-4 h-4" />
         </Button>
       </div>
       <div className="grid grid-cols-7 gap-1 text-xs text-center mb-1">

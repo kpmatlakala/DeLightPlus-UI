@@ -1,6 +1,6 @@
 import * as React from "react"
 // import { Slot } from "@radix-ui/react-slot"
-import { ChevronRightIcon, MoreHorizontalIcon } from '../../icons';
+import { ArrowIcon, MoreHorizontalIcon } from '../../icons';
 import { cn } from '../../lib/utils/cn';
 
 const Breadcrumb = React.forwardRef<
@@ -82,7 +82,11 @@ const BreadcrumbSeparator = ({
     className={cn("[&>svg]:w-3.5 [&>svg]:h-3.5", className)}
     {...props}
   >
-    {children ?? <ChevronRightIcon />}
+    {children ?? <ArrowIcon 
+      variant="chevron"
+      direction="right"
+      className="h-4 w-4 text-muted-foreground"
+    />}
   </li>
 )
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator"

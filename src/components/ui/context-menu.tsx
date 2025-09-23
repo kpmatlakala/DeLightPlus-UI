@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { cn } from '../../lib/utils/cn';
-import { CheckIcon, ChevronRightIcon, CircleIcon } from '../../icons';
+import { CheckIcon, ArrowIcon, CircleIcon } from '../../icons';
 
 // ContextMenu primitives
 export const ContextMenu = ({ children }: { children: React.ReactNode }) => <>{children}</>;
@@ -141,7 +141,7 @@ export const ContextMenuSubTrigger = React.forwardRef<HTMLDivElement, React.HTML
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto w-4 h-4" />
+      <ArrowIcon variant='chevron' direction='right' className="ml-auto w-4 h-4" />
     </div>
   )
 );

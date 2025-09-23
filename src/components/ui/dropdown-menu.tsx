@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { cn } from '../../lib/utils/cn';
-import { ChevronRightIcon, CheckIcon, CircleIcon } from '../../icons';
+import { ArrowIcon, CheckIcon, CircleIcon } from '../../icons';
 
 export interface DropdownMenuProps {
   trigger: React.ReactNode;
