@@ -52,7 +52,6 @@ export const Button: React.FC<ButtonProps> = ({
   );
 
   const fallbackStyle: React.CSSProperties = {
-    border: "none",
     cursor: "pointer",
     fontWeight: "bold",
     fontSize: "1rem",
