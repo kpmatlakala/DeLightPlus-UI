@@ -179,6 +179,54 @@ This will:
 2. Build the package
 3. Publish to npm
 
+## Theming
+
+This package exports a simple theme context to switch between light/dark or follow the system.
+
+Import order (in your app root) should be library CSS first, then your app CSS so overrides win:
+
+```tsx
+// Next.js app/layout.tsx or pages/_app.tsx
+import 'delightplus-ui/styles.css';
+import './globals.css';
+
+import { ThemeProvider } from 'delightplus-ui';
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <ThemeProvider defaultTheme="system">
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+Toggle example:
+
+```tsx
+import { useTheme } from 'delightplus-ui';
+
+export function ThemeToggle() {
+  const { theme, toggleTheme } = useTheme();
+  return <button onClick={toggleTheme}>Theme: {theme}</button>;
+}
+```
+
+Tailwind directives in your app:
+
+```css
+/* globals.css in your app */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+Note: The library ships with its own Tailwind-generated CSS (`styles.css`). Your app still needs its own Tailwind build to generate utilities used in your app code. Ensure Tailwind scans the library in your `content` globs.
+
 ## Troubleshooting
 
 - Vite + ESM PostCSS config

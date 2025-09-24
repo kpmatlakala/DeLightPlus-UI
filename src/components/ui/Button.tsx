@@ -2,10 +2,9 @@
 import React from "react";
 import { cn } from "../../lib/utils/cn";
 import { Slot } from "./Slot";
- 
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "custom";
+  variant?: "primary" | "secondary" | "outline" | "ghost";
   radius?: "none" | "sm" | "md" | "lg" | "xl" | "full";
   size?: "sm" | "md" | "lg" | "icon";
   isLoading?: boolean;
@@ -37,15 +36,18 @@ export const Button: React.FC<ButtonProps> = ({
   size = "md",
   isLoading = false,
   asChild = false,
+  disabled,
   ...props
 }) => {
+  const isDisabled = disabled || isLoading;
+
   const tailwindClass = cn(
     "flex items-center justify-center gap-2 transition duration-200",
-    variant === "primary" && "bg-blue-500 text-white hover:bg-blue-600",
-    variant === "secondary" && "bg-gray-200 text-gray-900 hover:bg-gray-300",
-    variant === "outline" && "border border-gray-300 text-gray-900 hover:bg-gray-100",
-    variant === "ghost" && "bg-transparent hover:bg-gray-100",
-    variant === "custom" && "",
+    variant === "primary" && "bg-black text-white hover:bg-gray-900",
+    variant === "secondary" && "bg-white text-black border border-gray-300 hover:bg-gray-100",
+    variant === "outline" && "bg-transparent border border-gray-500 text-black hover:bg-gray-100",
+    variant === "ghost" && "bg-transparent text-black hover:bg-gray-100",
+    isDisabled && "opacity-50 cursor-not-allowed",
     radiusMap[radius],
     sizeMap[size],
     className
@@ -60,7 +62,8 @@ export const Button: React.FC<ButtonProps> = ({
       <Slot
         className={tailwindClass}
         style={fallbackStyle}
-        disabled={isLoading}
+        aria-disabled={isDisabled}
+        data-disabled={isDisabled ? true : undefined}
         {...props}
       >
         {isLoading ? "Loading..." : children}
@@ -72,26 +75,10 @@ export const Button: React.FC<ButtonProps> = ({
     <button
       className={tailwindClass}
       style={fallbackStyle}
-      disabled={isLoading}
+      disabled={isDisabled}
       {...props}
     >
       {isLoading ? "Loading..." : children}
     </button>
   );
 };
-
-
-/* Usage Examples:
-<Button variant="primary" onClick={() => alert('Clicked!')}>Primary Button</Button>
-<Button variant="secondary" radius="lg" size="lg">Secondary Large Button</Button>
-
-You use the asChild prop when you want your Button to render a different element (like an <a>, a custom router <Link>, etc.) instead of a native <button>, but still apply all the button styles and props.
-
-Typical use cases:
-
-Navigation links:
-Next.js/React Router links:
-Any custom element:
-Summary:
-Use asChild when you want to style and behave like a button, but render a different element.
-*/
