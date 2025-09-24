@@ -13,7 +13,7 @@ export default defineConfig({
   clean: true,
   outDir: 'dist',
   shims: false,
-  external: ['react', 'react-dom'],
+  external: ['react', 'react-dom', 'react/jsx-runtime'],
   noExternal: ['clsx'],
   esbuildOptions(options) {
     options.loader = {
