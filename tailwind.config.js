@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     './src/**/*.{js,ts,jsx,tsx}',
-    './node_modules/delightplus-ui/dist/**/*.{js,ts,jsx,tsx}',
+    // './node_modules/delightplus-ui/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {},

@@ -1,6 +1,6 @@
 // components/Button.tsx
 import React from "react";
-import { clsx } from "clsx";
+import { cn } from "../../lib/utils/cn";
 import { Slot } from "./Slot";
  
 
@@ -39,7 +39,7 @@ export const Button: React.FC<ButtonProps> = ({
   asChild = false,
   ...props
 }) => {
-  const tailwindClass = clsx(
+  const tailwindClass = cn(
     "flex items-center justify-center gap-2 transition duration-200",
     variant === "primary" && "bg-blue-500 text-white hover:bg-blue-600",
     variant === "secondary" && "bg-gray-200 text-gray-900 hover:bg-gray-300",
@@ -52,13 +52,6 @@ export const Button: React.FC<ButtonProps> = ({
   );
 
   const fallbackStyle: React.CSSProperties = {
-    cursor: "pointer",
-    fontWeight: "bold",
-    fontSize: "1rem",
-    borderRadius: radius === "full" ? "9999px" : undefined,
-    padding: size === "sm" ? "0.25rem 0.5rem" : size === "lg" ? "0.75rem 1.5rem" : "0.5rem 1rem",
-    backgroundColor: variant === "primary" ? "#3b82f6" : variant === "secondary" ? "#e5e7eb" : undefined,
-    color: variant === "primary" ? "#ffffff" : variant === "secondary" ? "#111827" : undefined,
     ...style,
   };
 

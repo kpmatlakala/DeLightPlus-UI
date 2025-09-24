@@ -37,7 +37,7 @@ npm install -D tailwindcss@^3.4.1 postcss@^8.4.35 autoprefixer@^10.4.17
 module.exports = {
   content: [
     './src/**/*.{js,ts,jsx,tsx}',
-    './node_modules/delightplus-ui/**/*.{js,ts,jsx,tsx}',
+    './node_modules/delightplus-ui/**/*.{js,jsx,ts,tsx,mjs}',
   ],
   theme: {
     extend: {},
@@ -62,10 +62,18 @@ In your main application file (e.g., `src/app/layout.tsx` or `src/pages/_app.tsx
 
 ```tsx
 // Import DeLightPlus UI styles
-import 'delightplus-ui/dist/styles.css';
+import 'delightplus-ui/styles.css';
 // Import your own Tailwind styles
 import './globals.css';
 ```
+
+You may also import via the deep path if preferred:
+
+```tsx
+import 'delightplus-ui/dist/styles.css';
+```
+
+Order matters: import your own CSS after the library so your overrides win.
 
 ## Usage
 
@@ -170,6 +178,23 @@ This will:
 1. Increment the patch version
 2. Build the package
 3. Publish to npm
+
+## Troubleshooting
+
+- Vite + ESM PostCSS config
+  - If your app has `"type": "module"` in `package.json`, either rename `postcss.config.js` to `postcss.config.cjs`, or use an ESM export:
+  ```js
+  // postcss.config.js (ESM)
+  export default {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  };
+  ```
+
+- Tailwind cannot see classes from the library
+  - Ensure your Tailwind `content` includes the library as shown above, including `.mjs`.
 
 ## License
 
