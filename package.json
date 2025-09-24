@@ -1,6 +1,6 @@
 {
   "name": "delightplus-ui",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "Custom reusable React UI components by DeLightPlus",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -64,8 +64,8 @@
   "license": "MIT",
   "peerDependencies": {
     "clsx": "^2.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": ">=18.2.0 <20",
+    "react-dom": ">=18.2.0 <20"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
