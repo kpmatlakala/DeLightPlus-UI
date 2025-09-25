@@ -118,6 +118,20 @@ If you want to fully control the Button's styles
 - **Container**  
   A responsive wrapper for page content, with max-width and padding utilities.
 
+  Usage:
+  ```tsx
+  import { Container } from 'delightplus-ui';
+
+  export default function Page() {
+    return (
+      <Container width="xl" padded>
+        <h1 className="text-2xl font-semibold">Hello</h1>
+        <p className="text-muted-foreground">Content</p>
+      </Container>
+    );
+  }
+  ```
+
 - **Modal**  
   A reusable dialog/modal component with overlay and focus management.
 
@@ -149,9 +163,73 @@ If you want to fully control the Button's styles
   - Uses semantic Tailwind utilities bound to CSS vars (e.g., `bg-background`, `border-border`, `ring-ring`).
   - Error state: pass `error` to switch border/ring to red.
 
+- **Input**  
+  ForwardRef-enabled input with optional label, prefix/suffix icons, password toggle, and character count.
+
+  Usage:
+  ```tsx
+  import { Input } from 'delightplus-ui';
+
+  function Login() {
+    return (
+      <div className="space-y-2">
+        <Input label="Email" type="email" placeholder="you@example.com" />
+        <Input label="Password" variant="password" placeholder="••••••••" />
+      </div>
+    );
+  }
+  ```
+  Notes: Theming via CSS vars; error state supported via `error` prop; accessible focus using ring color from tokens.
+
+- **Select**  
+  Themed select with variants and sizes.
+
+  Usage:
+  ```tsx
+  import { Select } from 'delightplus-ui';
+
+  const options = [
+    { value: 'opt1', label: 'Option 1' },
+    { value: 'opt2', label: 'Option 2' },
+  ];
+
+  function Example() {
+    return (
+      <Select label="Choice" options={options} variant="outlined" size="md" />
+    );
+  }
+  ```
+
 - **Icon Set**  
   A large set of SVG icons as React components.  
   _See [Using Icons](#using-icons) for usage details._
+
+### Card
+
+Themed card components using CSS variables and Tailwind utilities.
+
+```tsx
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from 'delightplus-ui';
+
+export default function ExampleCard() {
+  return (
+    <Card variant="default">
+      <CardHeader>
+        <CardTitle>Title</CardTitle>
+        <CardDescription>Description text</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p className="text-foreground">Body content</p>
+      </CardContent>
+      <CardFooter>
+        <button className="px-3 py-1 rounded bg-primary text-primary-foreground">Action</button>
+      </CardFooter>
+    </Card>
+  );
+}
+```
+
+Variants: `default` | `muted` | `outline`.
 
 <!-- Add more components as you release them -->
 
@@ -302,6 +380,10 @@ MIT © DeLightPlus
 
 
 <!--
+
+If you want any screenshots or a live StackBlitz link embedded later, I can add that too.
+
+
 ---
 🔹 To publish a new patch release:
 ```bash

@@ -5,16 +5,23 @@ import { Slot } from './Slot';
 
 
 type AsChildProps = { asChild?: boolean };
+type Variant = 'default' | 'muted' | 'outline';
 
 const Card = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & AsChildProps
->(({ className, asChild, ...props }, ref) => {
+  React.HTMLAttributes<HTMLDivElement> & AsChildProps & { variant?: Variant }
+>(({ className, asChild, variant = 'default', ...props }, ref) => {
   const Comp = asChild ? Slot : 'div';
+  const variantClass =
+    variant === 'muted'
+      ? 'bg-muted text-foreground/90 border-border'
+      : variant === 'outline'
+      ? 'bg-background text-foreground border-border'
+      : 'bg-card text-card-foreground border-border';
   return (
     <Comp
       ref={ref}
-      className={cn('rounded-lg border bg-card text-card-foreground shadow-sm', className)}
+      className={cn('rounded-lg border shadow-sm', variantClass, className)}
       {...props}
     />
   );

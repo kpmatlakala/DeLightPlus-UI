@@ -11,9 +11,9 @@ export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & 
 };
 
 const variantMap = {
-  outlined: "border border-border focus:border-ring focus:ring-2 focus:ring-ring",
-  filled: "bg-muted border border-transparent focus:bg-background focus:border-ring focus:ring-2 focus:ring-ring",
-  standard: "border-0 border-b border-border rounded-none focus:border-ring focus:ring-0",
+  outlined: "border border-border bg-background focus:outline-none focus:border-border focus:ring-2 focus:ring-[hsl(var(--border))]",
+  filled: "bg-secondary border border-transparent focus:outline-none focus:bg-background focus:border-border focus:ring-2 focus:ring-[hsl(var(--border))]",
+  standard: "bg-background border-0 border-b border-border rounded-none focus:outline-none focus:border-border focus:ring-0",
 };
 
 const sizeMap = {
