@@ -96,11 +96,11 @@ function MyComponent() {
 
 ### Customizing Button Styles
 
-If you want to fully control the Button's styles (for example, to use a custom background or hover color), use `variant="custom"`:
+If you want to fully control the Button's styles
 
 ```tsx
 <Button
-  variant="custom"
+  // variant="primary"
   className="flex items-center gap-2 px-4 py-2 rounded hover:bg-gray-700 focus:outline-none"
 >
   <span className="font-semibold">Create</span>
@@ -120,6 +120,34 @@ If you want to fully control the Button's styles (for example, to use a custom b
 
 - **Modal**  
   A reusable dialog/modal component with overlay and focus management.
+
+- **Textarea**  
+  ForwardRef-enabled textarea with variants and sizes, themed via CSS variables.
+  
+  Usage:
+  ```tsx
+  import { Textarea } from 'delightplus-ui';
+
+  function Form() {
+    return (
+      <div className="space-y-2">
+        <Textarea
+          id="bio"
+          label="Bio"
+          placeholder="Tell us about yourself"
+          variant="outlined" // outlined | filled | standard
+          size="md" // sm | md | lg
+          helperText="Max 500 characters"
+        />
+      </div>
+    );
+  }
+  ```
+  
+  Notes:
+  - Accepts `ref` (forwardRef) for form libs.
+  - Uses semantic Tailwind utilities bound to CSS vars (e.g., `bg-background`, `border-border`, `ring-ring`).
+  - Error state: pass `error` to switch border/ring to red.
 
 - **Icon Set**  
   A large set of SVG icons as React components.  
