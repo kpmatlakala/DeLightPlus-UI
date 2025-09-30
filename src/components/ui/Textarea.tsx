@@ -6,8 +6,9 @@ export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & 
   error?: string;
   helperText?: string;
   variant?: "outlined" | "filled" | "standard";
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "full";
   fullWidth?: boolean;
+  fullHeight?: boolean;
 };
 
 const variantMap = {
@@ -20,6 +21,7 @@ const sizeMap = {
   sm: "px-2 py-1 text-sm",
   md: "px-3 py-2 text-base",
   lg: "px-4 py-3 text-lg",
+  full: "h-full w-full px-3 py-2 text-base",
 };
 
 export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(({
@@ -30,7 +32,9 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(({
   variant = "outlined",
   size = "md",
   fullWidth = false,
+  fullHeight = false,
   id,
+  style,
   ...props
 }, ref) => {
   const tailwindClass = cn(
@@ -39,16 +43,18 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(({
     sizeMap[size],
     error && 'border-red-500 focus:border-red-500 focus:ring-red-500',
     fullWidth ? 'w-full' : 'w-auto',
+    fullHeight && "h-full",
     className
   );
 
-  const fallbackStyle: React.CSSProperties = {
+  const finalStyle: React.CSSProperties = {
     minHeight: size === "sm" ? "80px" : size === "lg" ? "120px" : "100px",
     resize: "vertical",
+    ...style,
   };
 
   return (
-    <div className={cn('flex flex-col gap-1', fullWidth ? 'w-full' : 'w-auto')}>
+    <div className={cn('flex flex-col gap-1 h-full', fullWidth ? 'w-full' : 'w-auto')}>
       {label && (
         <label htmlFor={id} className="text-sm font-medium text-foreground/80">
           {label}
@@ -57,8 +63,8 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(({
       <textarea
         id={id}
         ref={ref}
-        className={tailwindClass}
-        style={fallbackStyle}
+        className={cn(tailwindClass, 'h-full')}
+        style={finalStyle}
         aria-invalid={!!error}
         {...props}
       />
@@ -73,5 +79,6 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(({
     </div>
   );
 });
+
 
 Textarea.displayName = "Textarea";
