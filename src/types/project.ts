@@ -3,8 +3,13 @@ export type Project = {
     id: number;
     title: string;
     description: string;
-    image?: string;
-    tags: string[];
+    tags?: string[];
+    category: string;
+    image: string;
+    year: string;
+    tech: string[];
+    status: string;
     githubUrl?: string;
     liveUrl?: string;
+    featured?: boolean;
 };
