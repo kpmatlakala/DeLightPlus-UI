@@ -1,6 +1,6 @@
 {
   "name": "delightplus-ui",
-  "version": "0.1.36",
+  "version": "0.1.37",
   "description": "Custom reusable React UI components by DeLightPlus",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -33,9 +33,9 @@
       "types": "./dist/pages/index.d.ts"
     },
     "./cards": {
-      "import": "./dist/cards/index.mjs",
-      "require": "./dist/cards/index.js",
-      "types": "./dist/cards/index.d.ts"
+      "import": "./dist/components/cards/index.mjs",
+      "require": "./dist/components/cards/index.js",
+      "types": "./dist/components/cards/index.d.ts"
     },
     "./styles.css": "./styles/tailwind.css",
     "./dist/styles.css": "./dist/styles.css"

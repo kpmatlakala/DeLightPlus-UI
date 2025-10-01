@@ -4,6 +4,8 @@ export default defineConfig({
   entry: [
     'src/index.ts',
     'src/components/index.ts',
+    'src/components/cards/index.ts',
+    // 'src/components/sections/index.ts',
     'src/icons/index.ts',
   ],
   format: ['esm', 'cjs'],

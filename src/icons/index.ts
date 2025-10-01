@@ -1,3 +1,5 @@
+// icons/index.ts
+
 export * from './HomeIcon';
 export * from './PlusIcon';
 export * from './SearchIcon';
