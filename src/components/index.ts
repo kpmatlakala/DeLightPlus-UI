@@ -1,6 +1,6 @@
 // components/index.ts
 
-// export * from './ui/Accordion';
+export * from './ui/Accordion';
 export * from './ui/Alert';
 export * from './ui/Alert-Dialog';
 // export * from './ui/Aspect-Ratio';
