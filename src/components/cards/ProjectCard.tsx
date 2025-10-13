@@ -1,15 +1,16 @@
 'use client';
 
-import { Project } from "../../types/project";
-import React from "react";
+import React from 'react';
+import { Project } from '../../types/project';
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
-} from "../ui/Card";
-import { Button } from "../ui/Button";
+  CardFooter,
+} from '../ui/Card';
+import { Button } from '../ui/Button';
 
 export type ProjectCardProps = {
   project: Project;
@@ -19,48 +20,53 @@ export type ProjectCardProps = {
 
 export function ProjectCard({ project, children, className }: ProjectCardProps) {
   const { title, description, tech, githubUrl, liveUrl, image } = project;
-
   const hasCustomContent = Boolean(children);
 
   return (
-    <Card className={`project-card ${className ?? ""}`}>
+    <Card className={`project-card flex flex-col ${className ?? ''}`}>
+      {/* Header */}
       <CardHeader>
         <CardTitle>{title}</CardTitle>
-        <CardDescription>
-          <span className="mt-2 text-sm block">{description}</span>
-        </CardDescription>
+        {description && (
+          <CardDescription className="mt-2 text-sm text-muted-foreground">
+            {description}
+          </CardDescription>
+        )}
       </CardHeader>
 
-      {/* Default or Custom Card Content */}
-      {hasCustomContent ? (
-        <CardContent>{children}</CardContent>
-      ) : (
-        <CardContent>
-          <img
-            src={image}
-            alt={`${title} preview`}
-            className="w-full h-48 object-cover rounded-md"
-            loading="lazy"
-          />
-        </CardContent>
-      )}
+      {/* Content */}
+      <CardContent>
+        {hasCustomContent ? (
+          children
+        ) : (
+          image && (
+            <img
+              src={image}
+              alt={`${title} preview`}
+              className="w-full h-48 object-cover rounded-md mb-4"
+              loading="lazy"
+            />
+          )
+        )}
 
-      {tech?.length > 0 && (
-        <div className="flex flex-wrap gap-2 mt-2">
-          {tech.map((tag) => (
-            <span
-              key={tag}
-              className="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300 text-xs rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
+        {/* Tech Tags */}
+        {tech?.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-2">
+            {tech.map((tag) => (
+              <span
+                key={tag}
+                className="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300 text-xs rounded-full"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </CardContent>
 
-      {/* Links */}
+      {/* Footer / Actions */}
       {(githubUrl || liveUrl) && (
-        <div className="p-6 pt-0 flex justify-between">
+        <CardFooter className="flex justify-between gap-2 mt-auto pt-0">
           {githubUrl && (
             <Button variant="outline" size="sm" asChild>
               <a href={githubUrl} target="_blank" rel="noopener noreferrer">
@@ -75,7 +81,7 @@ export function ProjectCard({ project, children, className }: ProjectCardProps) 
               </a>
             </Button>
           )}
-        </div>
+        </CardFooter>
       )}
     </Card>
   );
