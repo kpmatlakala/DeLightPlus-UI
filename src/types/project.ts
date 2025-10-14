@@ -9,7 +9,7 @@ export type Project = {
     year: string;
     tech: string[];
     status: string;
-    liveUrl?: string | null;
     githubUrl?: string | null;
+    liveUrl?: string | null;
     featured?: boolean;
 };

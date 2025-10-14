@@ -4,7 +4,7 @@ import { cn } from "../../lib/utils/cn";
 import { Slot } from "./Slot";
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "primary" | "secondary" | "outline" | "ghost";
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "icon" | "bordered" | "glass";
   radius?: "none" | "sm" | "md" | "lg" | "xl" | "full";
   size?: "sm" | "md" | "lg" | "icon";
   isLoading?: boolean;
@@ -27,7 +27,7 @@ const sizeMap = {
   icon: "p-2",
 };
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   children,
   className,
   style,
@@ -38,18 +38,37 @@ export const Button: React.FC<ButtonProps> = ({
   asChild = false,
   disabled,
   ...props
-}) => {
+}, ref) => {
   const isDisabled = disabled || isLoading;
 
+  const getVariantClasses = () => {
+    switch (variant) {
+      case "primary":
+        return "bg-primary text-primary-foreground hover:bg-primary/90";
+      case "secondary":
+        return "bg-secondary text-secondary-foreground border border-border hover:bg-secondary/80";
+      case "outline":
+        return "bg-transparent border border-border text-foreground hover:bg-secondary";
+      case "ghost":
+        return "bg-transparent text-foreground hover:bg-secondary";
+      case "icon":
+        return "bg-transparent text-foreground hover:bg-secondary rounded-full border border-border hover:border-border/80";
+      case "bordered":
+        return "bg-transparent border-2 border-border text-foreground hover:bg-secondary hover:border-border/80";
+      case "glass":
+        return "bg-background/80 backdrop-blur-md border border-border text-foreground hover:bg-secondary/80 shadow-lg";
+      default:
+        return "";
+    }
+  };
+
   const tailwindClass = cn(
-    "flex items-center justify-center gap-2 transition duration-200",
-    variant === "primary" && "bg-black text-white hover:bg-gray-900",
-    variant === "secondary" && "bg-white text-black border border-gray-300 hover:bg-gray-100",
-    variant === "outline" && "bg-transparent border border-gray-500 text-black hover:bg-gray-100",
-    variant === "ghost" && "bg-transparent text-black hover:bg-gray-100",
-    isDisabled && "opacity-50 cursor-not-allowed",
-    radiusMap[radius],
+    "flex items-center justify-center gap-2 transition duration-200 font-medium",
+    getVariantClasses(),
+    // Only apply radius if not already set by variant (like icon variant)
+    variant !== "icon" && radiusMap[radius],
     sizeMap[size],
+    isDisabled && "opacity-50 cursor-not-allowed",
     className
   );
 
@@ -60,6 +79,7 @@ export const Button: React.FC<ButtonProps> = ({
   if (asChild) {
     return (
       <Slot
+        ref={ref}
         className={tailwindClass}
         style={fallbackStyle}
         aria-disabled={isDisabled}
@@ -73,6 +93,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      ref={ref}
       className={tailwindClass}
       style={fallbackStyle}
       disabled={isDisabled}
@@ -81,4 +102,6 @@ export const Button: React.FC<ButtonProps> = ({
       {isLoading ? "Loading..." : children}
     </button>
   );
-};
+});
+
+Button.displayName = "Button";

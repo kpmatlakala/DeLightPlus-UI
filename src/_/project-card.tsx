@@ -67,7 +67,6 @@ export function ProjectCard({ project, children, className }: ProjectCardProps) 
       {/* Footer / Actions */}
       {(githubUrl || liveUrl) && (
         <CardFooter className="flex justify-between gap-2 mt-auto pt-0">
-          
           {githubUrl && (
             <Button variant="outline" size="sm" asChild>
               <a href={githubUrl} target="_blank" rel="noopener noreferrer">
@@ -75,7 +74,6 @@ export function ProjectCard({ project, children, className }: ProjectCardProps) 
               </a>
             </Button>
           )}
-
           {liveUrl && (
             <Button size="sm" asChild>
               <a href={liveUrl} target="_blank" rel="noopener noreferrer">
