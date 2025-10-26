@@ -7,6 +7,8 @@ export default defineConfig({
     'src/components/cards/index.ts',
     // 'src/components/sections/index.ts',
     'src/icons/index.ts',
+    // 'src/components/3d/index.ts',
+    
   ],
   format: ['esm', 'cjs'],
   dts: true,

@@ -9,6 +9,7 @@
     ],
     "jsx": "react-jsx",
     "declaration": true,
+    "declarationDir": "dist/types",
     "outDir": "dist",
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -18,7 +19,8 @@
     "strict": true
   },
   "include": [
-    "src"
+    "src", 
+    "src/types"
   ],
   "paths": {
       "@/*": ["src/*"] // or just ["*"] if no /src folder

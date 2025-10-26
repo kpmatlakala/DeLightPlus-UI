@@ -1,7 +1,7 @@
 // components/Button.tsx
 import React from "react";
 import { cn } from "../../lib/utils/cn";
-import { Slot } from "./Slot";
+import { Slot } from "./slot";
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "primary" | "secondary" | "outline" | "ghost" | "icon" | "bordered" | "glass";

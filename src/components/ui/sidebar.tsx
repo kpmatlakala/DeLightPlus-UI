@@ -1,7 +1,7 @@
 import React, { useContext, useState, useCallback, useMemo, useEffect, useRef, createContext } from "react";
 import { cn } from '../../lib/utils/cn';
-import { Button } from './Button';
-import { Input } from './Input';
+import { Button } from './button';
+import { Input } from './input';
 import { Separator } from "./separator";
 import { Skeleton } from "./skeleton";
 

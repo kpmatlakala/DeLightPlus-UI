@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { cn } from '../../lib/utils/cn';
-import { Button } from './Button';
+import { Button } from './button';
 
 export interface AlertDialogProps {
   open: boolean;

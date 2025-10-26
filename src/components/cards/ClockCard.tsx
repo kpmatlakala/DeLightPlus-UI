@@ -1,7 +1,7 @@
-import { Button } from "../ui/Button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/Card";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/Collapsible";
-import { Input } from "../ui/Input";
+import { Button } from "../ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible";
+import { Input } from "../ui/input";
 import {
   MapPin,
   Settings,

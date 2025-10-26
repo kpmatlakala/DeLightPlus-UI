@@ -3,7 +3,7 @@
 import * as React from "react"
 import { createPortal } from "react-dom"
 import { cn } from "../../lib/utils/cn"
-import { Slot } from "./Slot"
+import { Slot } from "./slot"
 
 // Drawer Context
 interface DrawerContextValue {

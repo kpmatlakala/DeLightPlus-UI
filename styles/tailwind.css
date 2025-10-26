@@ -47,6 +47,7 @@
 }
 
 
+
 /* Hex-based tokens kept for backwards compatibility */
 :root {
   /* Light theme - Relative grayscale hierarchy */
@@ -232,4 +233,21 @@ button, a, input, select, textarea {
   opacity: 0.5;
   pointer-events: none;
   cursor: not-allowed;
+}
+
+
+@layer utilities {
+  @keyframes rotate-3d {
+    0% {
+      transform: rotateX(-20deg) rotateY(0deg);
+    }
+    100% {
+      transform: rotateX(-20deg) rotateY(360deg);
+    }
+  }
+
+  .animate-rotate-3d {
+    animation: rotate-3d 8s linear infinite;
+    transform-style: preserve-3d;
+  }
 }

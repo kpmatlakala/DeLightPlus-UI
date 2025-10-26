@@ -1,6 +1,6 @@
 {
   "name": "delightplus-ui",
-  "version": "0.2.5",
+  "version": "0.2.8",
   "description": "Custom reusable React UI components by DeLightPlus",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -8,34 +8,34 @@
   "style": "dist/styles.css",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
     "./icons": {
+      "types": "./dist/icons/index.d.ts",
       "import": "./dist/icons/index.mjs",
-      "require": "./dist/icons/index.js",
-      "types": "./dist/icons/index.d.ts"
+      "require": "./dist/icons/index.js"
     },
     "./components": {
+      "types": "./dist/components/index.d.ts",
       "import": "./dist/components/index.mjs",
-      "require": "./dist/components/index.js",
-      "types": "./dist/components/index.d.ts"
+      "require": "./dist/components/index.js"
     },
     "./sections": {
+      "types": "./dist/components/sections/index.d.ts",
       "import": "./dist/components/sections/index.mjs",
-      "require": "./dist/components/sections/index.js",
-      "types": "./dist/components/sections/index.d.ts"
+      "require": "./dist/components/sections/index.js"
     },
     "./pages": {
+      "types": "./dist/pages/index.d.ts",
       "import": "./dist/pages/index.mjs",
-      "require": "./dist/pages/index.js",
-      "types": "./dist/pages/index.d.ts"
+      "require": "./dist/pages/index.js"
     },
     "./cards": {
+      "types": "./dist/components/cards/index.d.ts",
       "import": "./dist/components/cards/index.mjs",
-      "require": "./dist/components/cards/index.js",
-      "types": "./dist/components/cards/index.d.ts"
+      "require": "./dist/components/cards/index.js"
     },
     "./styles.css": "./styles/tailwind.css",
     "./dist/styles.css": "./dist/styles.css"

@@ -1,6 +1,6 @@
 import React from 'react';
 import { cn } from '../../lib/utils/cn';
-import { Slot } from './Slot';
+import { Slot } from './slot';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLElement> {
   variant?: 'default' | 'secondary' | 'destructive' | 'outline';

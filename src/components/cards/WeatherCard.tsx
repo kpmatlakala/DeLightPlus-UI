@@ -4,8 +4,8 @@ import { Project } from "../../types/project";
 import { ProjectCard } from "./ProjectCard";
 import { Sun, MapPin, Settings } from "lucide-react";
 import { useState } from "react";
-import { Input } from "../ui/Input";
-import { Button } from "../ui/Button";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
 // Dummy location hook
 function useLocation() {

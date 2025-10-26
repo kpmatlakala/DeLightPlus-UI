@@ -9,8 +9,8 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from '../ui/Card';
-import { Button } from '../ui/Button';
+} from '../ui/card';
+import { Button } from '../ui/button';
 
 export type ProjectCardProps = {
   project: Project;

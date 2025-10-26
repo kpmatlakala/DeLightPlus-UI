@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { cn } from '../../lib/utils/cn';
-import { Button } from './Button';
+import { Button } from './button';
 import { ArrowIcon } from '../../icons';
 
 export interface CarouselProps {

@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect, createContext, useContext, ReactNode } from "react";
-import { Dialog, DialogContent } from "./Dialog";
+import { Dialog, DialogContent } from "./dialog";
 import { SearchIcon } from "../../icons/SearchIcon";
 import { cn } from "../../lib/utils/cn";
 

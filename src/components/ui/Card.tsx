@@ -1,7 +1,7 @@
 // components/Card.tsx
 import React from 'react';
 import { cn } from '../../lib/utils/cn';
-import { Slot } from './Slot';
+import { Slot } from './slot';
 
 
 type AsChildProps = { asChild?: boolean };
