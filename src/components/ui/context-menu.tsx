@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useState, useEffect } from 'react';
 import { cn } from '../../lib/utils/cn';
 import { CheckIcon, ArrowIcon, CircleIcon } from '../../icons';

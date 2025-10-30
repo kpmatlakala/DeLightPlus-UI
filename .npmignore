@@ -2,3 +2,11 @@ example/
 storybook-static/
 node_modules/
 .vscode/
+
+node_modules
+.next
+dist
+build
+
+_notes.md
+notes.md

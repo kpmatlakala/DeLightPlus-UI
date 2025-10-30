@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useMemo, useRef, useEffect, createContext, useContext, ReactNode } from "react";
 import { Dialog, DialogContent } from "./dialog";
 import { SearchIcon } from "../../icons/SearchIcon";

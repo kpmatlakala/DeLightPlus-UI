@@ -1,4 +1,6 @@
-// components/Container.tsx
+"use client";
+
+// components/container.tsx
 import React from "react";
 import { cn } from "../../lib/utils/cn";
 
@@ -13,7 +15,7 @@ const widthMap: Record<NonNullable<ContainerProps["width"]>, string> = {
   lg: "max-w-screen-lg",
   xl: "max-w-screen-xl",
   "2xl": "max-w-screen-2xl",
-  full: "max-w-full",
+  full: "min-w-full max-w-full",
 };
 
 export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(

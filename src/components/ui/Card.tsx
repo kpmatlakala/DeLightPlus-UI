@@ -1,4 +1,6 @@
-// components/Card.tsx
+"use client";
+
+// components/card.tsx
 import React from 'react';
 import { cn } from '../../lib/utils/cn';
 import { Slot } from './slot';
@@ -21,7 +23,7 @@ const Card = React.forwardRef<
   return (
     <Comp
       ref={ref}
-      className={cn('rounded-lg border shadow-sm', variantClass, className)}
+      className={cn('flex rounded-lg border shadow-sm', variantClass, className)}
       {...props}
     />
   );

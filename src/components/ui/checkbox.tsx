@@ -1,6 +1,8 @@
+"use client";
+
 import React from 'react';
-import { cn } from '../../lib/utils/cn'; // Adjust path as needed
-import { CheckIcon } from '../../icons'; // Use your own icon
+import { cn } from '../../lib/utils/cn'; 
+import { CheckIcon } from '../../icons';
 
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;

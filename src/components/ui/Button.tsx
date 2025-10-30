@@ -1,4 +1,6 @@
-// components/Button.tsx
+"use client";
+
+// components/button.tsx
 import React from "react";
 import { cn } from "../../lib/utils/cn";
 import { Slot } from "./slot";

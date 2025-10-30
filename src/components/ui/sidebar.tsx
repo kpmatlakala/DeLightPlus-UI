@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useContext, useState, useCallback, useMemo, useEffect, useRef, createContext } from "react";
 import { cn } from '../../lib/utils/cn';
 import { Button } from './button';
