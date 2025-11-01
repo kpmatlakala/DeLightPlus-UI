@@ -6,6 +6,7 @@ import 'delightplus-ui/styles.css';
 
 // 2. Your own Tailwind / globals next
 import "./globals.css";
+import { ThemeProvider } from "delightplus-ui";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,7 +34,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider defaultTheme="system">
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
